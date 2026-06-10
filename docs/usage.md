@@ -7,7 +7,7 @@ This guide covers the public CLI and MCP workflows.
 - macOS with Xcode installed.
 - Node.js 20 or newer.
 - An iOS Simulator or trusted physical iOS device.
-- A VLM provider API key, such as `DASHSCOPE_API_KEY` for the default DashScope Qwen VL provider.
+- An OpenAI-compatible vision-language model (VLM) API key.
 - For physical devices: Developer Mode, device trust, unlocked device, and WDA signing configuration.
 
 ## Install
@@ -26,18 +26,54 @@ node dist/cli.js --help
 
 ## Configure Models
 
-RunCue reads model provider API keys from environment variables by default:
+RunCue needs a vision-language model, not a text-only LLM. The provider must be OpenAI-compatible and support image input for visual fallback, visual grounding, and screenshot checks.
 
-```bash
-export DASHSCOPE_API_KEY="your-dashscope-api-key"
+The config file is:
+
+```text
+~/.runcue/config.json
 ```
 
-Inspect or update local config:
+RunCue uses built-in defaults when the file does not exist. Create or update it with `runcue config set ...`, or edit the JSON manually for custom providers.
+
+Supported provider protocol:
+
+| Field | Required | Meaning |
+| --- | --- | --- |
+| `baseUrl` | Yes | OpenAI-compatible API base URL. |
+| `model` | Yes | VLM model name accepted by the provider. |
+| `apiKey` | Yes | API key value or environment reference such as `${MY_VL_API_KEY}`. |
+| `wireApi` | No | `chat` for `chat.completions`, or `responses` for the Responses API. Default: `chat`. |
+| `inputMode` | No | `viewtree` or `screenshot`. Default: `viewtree`. |
+| `headers` | No | Extra HTTP headers. |
+
+Example custom VLM config:
+
+```json
+{
+  "vlm": {
+    "default": "my-vl",
+    "providers": {
+      "my-vl": {
+        "baseUrl": "https://api.example.com/v1",
+        "model": "your-vl-model",
+        "apiKey": "${MY_VL_API_KEY}",
+        "wireApi": "chat",
+        "inputMode": "viewtree"
+      }
+    }
+  }
+}
+```
+
+Then select it:
 
 ```bash
-runcue config list
-runcue config set model.provider dashscope-vl-flash
+export MY_VL_API_KEY="your-api-key"
+runcue config set provider my-vl
 ```
+
+RunCue includes DashScope/Qwen VL provider examples for convenience, but users can configure any compatible VL model.
 
 ## Device Selection
 

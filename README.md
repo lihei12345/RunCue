@@ -17,7 +17,7 @@ RunCue is intentionally scoped: it does not build, install, or debug your app. U
 - macOS with Xcode installed.
 - Node.js 20 or newer.
 - A visible iOS Simulator or trusted physical iOS device.
-- A VLM provider API key. DashScope Qwen VL is the default path.
+- An OpenAI-compatible vision-language model (VLM) API key.
 
 For physical devices, you also need:
 
@@ -42,17 +42,68 @@ node dist/cli.js --help
 
 ## Configure Models
 
-RunCue reads API keys from environment variables by default:
+RunCue needs a vision-language model, not a text-only LLM. The provider must be OpenAI-compatible and support image input for visual fallback, visual grounding, and screenshot checks.
 
-```bash
-export DASHSCOPE_API_KEY="your-dashscope-api-key"
+Supported wire APIs:
+
+- `chat` using `chat.completions` with text and `image_url` content parts. This is the default.
+- `responses` using the OpenAI Responses API with `input_text` and `input_image`.
+
+The local config file is:
+
+```text
+~/.runcue/config.json
 ```
 
-The default model provider is `dashscope-vl-plus`, backed by `qwen3-vl-plus`. You can inspect or change local configuration with:
+RunCue uses built-in defaults when this file does not exist. The file is created when you run `runcue config set ...`, or you can create it manually.
+
+Inspect the effective config:
 
 ```bash
 runcue config list
-runcue config set model.provider dashscope-vl-flash
+```
+
+Set the default provider:
+
+```bash
+runcue config set provider my-vl
+```
+
+Environment variable references such as `${MY_VL_API_KEY}` are resolved at runtime. A minimal custom provider looks like this:
+
+```json
+{
+  "vlm": {
+    "default": "my-vl",
+    "providers": {
+      "my-vl": {
+        "baseUrl": "https://api.example.com/v1",
+        "model": "your-vl-model",
+        "apiKey": "${MY_VL_API_KEY}",
+        "wireApi": "chat",
+        "inputMode": "viewtree"
+      }
+    }
+  }
+}
+```
+
+Provider fields:
+
+| Field | Required | Meaning |
+| --- | --- | --- |
+| `baseUrl` | Yes | OpenAI-compatible API base URL. |
+| `model` | Yes | VLM model name accepted by that provider. |
+| `apiKey` | Yes | API key value or environment reference such as `${MY_VL_API_KEY}`. |
+| `wireApi` | No | `chat` or `responses`; defaults to `chat`. |
+| `inputMode` | No | `viewtree` or `screenshot`; defaults to `viewtree`. Use `screenshot` only for providers/apps where visual-only operation is preferred. |
+| `headers` | No | Extra HTTP headers to pass to the provider. |
+
+RunCue ships with several built-in provider examples, including DashScope/Qwen VL. They are examples, not a requirement. For example:
+
+```bash
+export DASHSCOPE_API_KEY="your-dashscope-api-key"
+runcue config set provider dashscope-vl-plus
 ```
 
 ## Quick Start
