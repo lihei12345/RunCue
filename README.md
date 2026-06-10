@@ -1,4 +1,8 @@
-# RunCue
+<p align="center">
+  <img src="docs/assets/runcue-logo.png" alt="RunCue logo" width="180" />
+</p>
+
+<h1 align="center">RunCue</h1>
 
 RunCue is a developer UI navigation tool for iOS apps. It uses natural-language tasks to navigate, type, inspect, and verify app UI through WebDriverAgent, with MCP tools designed to work alongside build tools such as XcodeBuildMCP.
 
@@ -176,6 +180,8 @@ args = ["/absolute/path/to/RunCue/dist/cli.js", "mcp"]
 - `runcue_doctor`: diagnose WDA setup and signing issues.
 
 ## Architecture
+
+![RunCue iOS UI Navigation Architecture](docs/assets/runcue-readme-architecture.png)
 
 The current architecture is WDA-only:
 

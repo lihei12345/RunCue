@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">RunCue iOS UI Navigation Architecture</title>
+  <desc id="desc">RunCue connects coding agents to iOS devices through an MCP or CLI entry point, an agent loop, OpenAI-compatible VLM providers, and WebDriverAgent.</desc>
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .title { fill: #111827; font-size: 25px; font-weight: 700; }
+    .subtitle { fill: #6b7280; font-size: 13px; }
+    .section-label { fill: #374151; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; }
+    .node-title { fill: #111827; font-size: 15px; font-weight: 700; }
+    .node-sub { fill: #6b7280; font-size: 12px; }
+    .small { fill: #6b7280; font-size: 11px; }
+    .badge { fill: #0f172a; font-size: 10px; font-weight: 700; letter-spacing: 0.9px; }
+  </style>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#ea580c"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="600" y="44" text-anchor="middle" class="title">RunCue iOS UI Navigation Architecture</text>
+  <text x="600" y="70" text-anchor="middle" class="subtitle">Coding agents delegate UI navigation to RunCue; RunCue observes, plans, acts, and verifies through WDA and a VLM.</text>
+
+  <rect x="48" y="112" width="1104" height="94" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.3"/>
+  <text x="68" y="136" class="section-label">AGENT ENTRY</text>
+
+  <rect x="82" y="154" width="210" height="34" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.4"/>
+  <text x="187" y="176" text-anchor="middle" class="node-title">Coding Agent</text>
+
+  <rect x="380" y="140" width="230" height="58" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.6"/>
+  <text x="495" y="164" text-anchor="middle" class="node-title">RunCue MCP Server</text>
+  <text x="495" y="184" text-anchor="middle" class="node-sub">stdio tools for agents</text>
+
+  <rect x="694" y="140" width="230" height="58" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.6"/>
+  <text x="809" y="164" text-anchor="middle" class="node-title">RunCue CLI</text>
+  <text x="809" y="184" text-anchor="middle" class="node-sub">run, check, devices, doctor</text>
+
+  <path d="M292 171 H370" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M610 169 H684" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+
+  <rect x="48" y="244" width="690" height="286" rx="12" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.3"/>
+  <text x="68" y="268" class="section-label">RUNCUE AGENT LOOP</text>
+
+  <rect x="86" y="306" width="142" height="70" rx="8" fill="#ecfeff" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="157" y="333" text-anchor="middle" class="node-title">Planner</text>
+  <text x="157" y="353" text-anchor="middle" class="node-sub">next semantic goal</text>
+
+  <rect x="292" y="306" width="142" height="70" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="363" y="333" text-anchor="middle" class="node-title">Tree Locator</text>
+  <text x="363" y="353" text-anchor="middle" class="node-sub">accessibility first</text>
+
+  <rect x="498" y="306" width="142" height="70" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="569" y="333" text-anchor="middle" class="node-title">Visual Locator</text>
+  <text x="569" y="353" text-anchor="middle" class="node-sub">screenshot grounding</text>
+
+  <rect x="86" y="426" width="142" height="70" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="157" y="453" text-anchor="middle" class="node-title">Executor</text>
+  <text x="157" y="473" text-anchor="middle" class="node-sub">tap, swipe, type</text>
+
+  <rect x="292" y="426" width="142" height="70" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="363" y="453" text-anchor="middle" class="node-title">Verifier</text>
+  <text x="363" y="473" text-anchor="middle" class="node-sub">progress + completion</text>
+
+  <rect x="498" y="426" width="142" height="70" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="569" y="453" text-anchor="middle" class="node-title">Artifacts</text>
+  <text x="569" y="473" text-anchor="middle" class="node-sub">tree, screenshot, trace</text>
+
+  <path d="M228 341 H282" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M434 341 H488" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M569 376 C569 404, 205 398, 178 422" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M228 461 H282" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M434 461 H488" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M363 426 C363 398, 157 402, 157 382" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+
+  <rect x="790" y="244" width="362" height="286" rx="12" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.3"/>
+  <text x="810" y="268" class="section-label">MODEL PROVIDER</text>
+  <rect x="834" y="316" width="274" height="88" rx="10" fill="#ffffff" stroke="#ccfbf1" stroke-width="1.8"/>
+  <rect x="850" y="332" width="54" height="54" rx="12" fill="#ccfbf1" stroke="#5eead4" stroke-width="1.3"/>
+  <text x="877" y="363" text-anchor="middle" class="badge">VL</text>
+  <text x="930" y="346" text-anchor="start" class="node-title">OpenAI-compatible VLM</text>
+  <text x="930" y="368" text-anchor="start" class="node-sub">chat.completions or responses</text>
+  <text x="930" y="388" text-anchor="start" class="node-sub">text + image input</text>
+
+  <rect x="834" y="430" width="274" height="58" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.4"/>
+  <text x="971" y="454" text-anchor="middle" class="node-title">Provider Config</text>
+  <text x="971" y="474" text-anchor="middle" class="node-sub">baseUrl, model, apiKey, wireApi</text>
+
+  <path d="M640 341 H824" stroke="#16a34a" stroke-width="2.1" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M640 461 C704 461, 748 362, 824 362" stroke="#16a34a" stroke-width="2.1" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M971 430 V414" stroke="#16a34a" stroke-width="2.1" fill="none" marker-end="url(#arrow-green)"/>
+
+  <rect x="48" y="574" width="1104" height="116" rx="12" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.3"/>
+  <text x="68" y="598" class="section-label">IOS AUTOMATION RUNTIME</text>
+
+  <rect x="86" y="626" width="190" height="44" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="181" y="653" text-anchor="middle" class="node-title">WDA Manager</text>
+
+  <rect x="342" y="626" width="224" height="44" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="454" y="653" text-anchor="middle" class="node-title">WebDriverAgentRunner</text>
+
+  <rect x="636" y="614" width="196" height="68" rx="9" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="734" y="640" text-anchor="middle" class="node-title">iOS App</text>
+  <text x="734" y="660" text-anchor="middle" class="node-sub">simulator or device</text>
+
+  <rect x="906" y="614" width="202" height="68" rx="9" fill="#ffffff" stroke="#c7d2fe" stroke-width="1.5" stroke-dasharray="7,4"/>
+  <text x="1007" y="640" text-anchor="middle" class="node-title">XcodeBuildMCP</text>
+  <text x="1007" y="660" text-anchor="middle" class="node-sub">build, install, logs</text>
+
+  <path d="M157 496 C157 548, 181 573, 181 616" stroke="#ea580c" stroke-width="2.1" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M276 648 H332" stroke="#ea580c" stroke-width="2.1" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M566 648 H626" stroke="#ea580c" stroke-width="2.1" fill="none" marker-end="url(#arrow-orange)"/>
+  <path d="M906 648 H842" stroke="#6b7280" stroke-width="1.9" fill="none" stroke-dasharray="7,5" marker-end="url(#arrow-gray)"/>
+
+  <rect x="48" y="706" width="466" height="30" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+  <line x1="66" y1="721" x2="96" y2="721" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="106" y="725" class="small">agent loop</text>
+  <line x1="190" y1="721" x2="220" y2="721" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="230" y="725" class="small">model calls</text>
+  <line x1="330" y1="721" x2="360" y2="721" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="370" y="725" class="small">WDA actions</text>
+</svg>
