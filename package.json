@@ -1,0 +1,71 @@
+{
+  "name": "runcue",
+  "version": "0.1.0",
+  "description": "Developer UI navigation tool — run business flows with a single command",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "vendor/appium-webdriveragent",
+    "README.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "THIRD_PARTY_NOTICES.md",
+    "docs"
+  ],
+  "bin": {
+    "runcue": "dist/cli.js"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc",
+    "prepack": "npm run clean && npm run build",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "cli": "node dist/cli.js",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "mcp",
+    "ui-automation",
+    "ios-simulator",
+    "ios-device",
+    "webdriveragent",
+    "vlm",
+    "developer-tools"
+  ],
+  "author": "RunCue contributors",
+  "license": "MIT",
+  "homepage": "https://github.com/lihei12345/RunCue#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lihei12345/RunCue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lihei12345/RunCue/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "commander": "^14.0.3",
+    "openai": "^6.34.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
+    "eslint": "^10.2.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.4"
+  }
+}

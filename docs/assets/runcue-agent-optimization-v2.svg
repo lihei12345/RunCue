@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 900" width="1280" height="900">
+<style>
+text{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:0}
+.title{font-size:30px;font-weight:700;fill:#111827}.subtitle{font-size:14px;fill:#6b7280}.sec{font-size:14px;font-weight:700;fill:#2563eb;letter-spacing:2px}.type{font-size:10.5px;font-weight:700;fill:#9ca3af;letter-spacing:1px}.label{font-size:15px;font-weight:700;fill:#111827}.bullet{font-size:11.5px;fill:#4b5563}.small{font-size:12px;fill:#6b7280}
+</style><defs>
+<marker id="arrow-learn" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+<marker id="arrow-apply" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#7c3aed"/></marker>
+<marker id="arrow-loop" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+<marker id="arrow-verify" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#f97316"/></marker>
+<marker id="arrow-feedback" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker>
+<filter id="shadow" x="-12%" y="-16%" width="124%" height="136%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.09"/></filter>
+</defs>
+<rect width="1280" height="900" fill="#ffffff"/>
+<text class="title" x="640.0" y="48" text-anchor="middle">RunCue Generic GUI Agent Optimization</text>
+<text class="subtitle" x="640.0" y="76" text-anchor="middle">What RunCue adopted from Midscene.js and AutoGLM: split responsibilities, act on current observation, verify every transition</text>
+<rect x="42" y="120" width="300" height="520" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.96"/>
+<text class="sec" x="60" y="148">1. Learned Patterns</text>
+<rect x="382" y="120" width="330" height="520" rx="16" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.96"/>
+<text class="sec" x="400" y="148">2. Generalized Principles</text>
+<rect x="752" y="120" width="486" height="520" rx="16" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.96"/>
+<text class="sec" x="770" y="148">3. RunCue Runtime Loop</text>
+<rect x="42" y="774" width="1196" height="96" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.96"/>
+<text class="sec" x="60" y="802">4. Why This Is Generic</text>
+<path d="M 312.0 247.0 L 364.0 247.0 L 364.0 194.0 L 416.0 194.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-learn)" opacity="0.9"/>
+<rect x="289.0" y="173.0" width="150" height="18" rx="5" fill="#ffffff" opacity="0.94"/>
+<text class="small" x="364.0" y="186.0" text-anchor="middle">observation discipline</text>
+<path d="M 312.0 247.0 L 364.0 247.0 L 364.0 296.0 L 416.0 296.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-learn)" opacity="0.9"/>
+<rect x="319.0" y="275.0" width="90" height="18" rx="5" fill="#ffffff" opacity="0.94"/>
+<text class="small" x="364.0" y="288.0" text-anchor="middle">split locate</text>
+<path d="M 312.0 471.0 L 364.0 471.0 L 364.0 402.0 L 416.0 402.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-learn)" opacity="0.9"/>
+<rect x="319.0" y="381.0" width="90" height="18" rx="5" fill="#ffffff" opacity="0.94"/>
+<text class="small" x="364.0" y="394.0" text-anchor="middle">state guards</text>
+<path d="M 312.0 471.0 L 364.0 471.0 L 364.0 516.0 L 416.0 516.0" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-learn)" opacity="0.9"/>
+<rect x="307.0" y="495.0" width="114" height="18" rx="5" fill="#ffffff" opacity="0.94"/>
+<text class="small" x="364.0" y="508.0" text-anchor="middle">verify after act</text>
+<path d="M 674.0 194.0 L 739.0 194.0 L 739.0 195.0 L 804.0 195.0" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-apply)" opacity="0.9"/>
+<path d="M 674.0 296.0 L 847.0 296.0 L 847.0 195.0 L 1020.0 195.0" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-apply)" opacity="0.9"/>
+<path d="M 674.0 296.0 L 847.0 296.0 L 847.0 334.0 L 1020.0 334.0" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-apply)" opacity="0.9"/>
+<path d="M 674.0 402.0 L 739.0 402.0 L 739.0 476.0 L 804.0 476.0" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-apply)" opacity="0.9"/>
+<path d="M 674.0 516.0 L 847.0 516.0 L 847.0 476.0 L 1020.0 476.0" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-apply)" opacity="0.9"/>
+<path d="M 970.0 195.0 L 995.0 195.0 L 995.0 195.0 L 1020.0 195.0" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-loop)" opacity="0.9"/>
+<path d="M 1103.0 230.0 L 1103.0 263.0 L 1103.0 263.0 L 1103.0 296.0" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-loop)" opacity="0.9"/>
+<path d="M 1020.0 334.0 L 995.0 334.0 L 995.0 334.0 L 970.0 334.0" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-loop)" opacity="0.9"/>
+<path d="M 887.0 372.0 L 887.0 405.0 L 887.0 405.0 L 887.0 438.0" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-loop)" opacity="0.9"/>
+<path d="M 970.0 476.0 L 995.0 476.0 L 995.0 476.0 L 1020.0 476.0" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#arrow-verify)" opacity="0.9"/>
+<path d="M 1103.0 514.0 L 1103.0 531.0 L 995.0 531.0 L 995.0 548.0" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-feedback)" opacity="0.9"/>
+<path d="M 995.0 548.0 L 995.0 389.0 L 887.0 389.0 L 887.0 230.0" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-feedback)" opacity="0.9"/>
+<rect x="72" y="172" width="240" height="150" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="192.0" y="192" text-anchor="middle">Reference</text>
+<text class="label" x="192.0" y="214" text-anchor="middle">Midscene.js</text>
+<circle cx="90" cy="238" r="2.6" fill="#2563eb"/>
+<text class="bullet" x="100" y="242">Plan / locate / act split</text>
+<circle cx="90" cy="256" r="2.6" fill="#2563eb"/>
+<text class="bullet" x="100" y="260">Action schema + examples</text>
+<circle cx="90" cy="274" r="2.6" fill="#2563eb"/>
+<text class="bullet" x="100" y="278">Current observation focus</text>
+<circle cx="90" cy="292" r="2.6" fill="#2563eb"/>
+<text class="bullet" x="100" y="296">Assertions outside actions</text>
+<rect x="72" y="392" width="240" height="158" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="192.0" y="412" text-anchor="middle">Reference</text>
+<text class="label" x="192.0" y="434" text-anchor="middle">AutoGLM</text>
+<circle cx="90" cy="458" r="2.6" fill="#16a34a"/>
+<text class="bullet" x="100" y="462">Code-like action space</text>
+<circle cx="90" cy="476" r="2.6" fill="#16a34a"/>
+<text class="bullet" x="100" y="480">Explicit app state checks</text>
+<circle cx="90" cy="494" r="2.6" fill="#16a34a"/>
+<text class="bullet" x="100" y="498">Clear type semantics</text>
+<circle cx="90" cy="512" r="2.6" fill="#16a34a"/>
+<text class="bullet" x="100" y="516">Retry / wait / takeover rules</text>
+<rect x="416" y="156" width="258" height="76" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="545.0" y="176" text-anchor="middle">Contract</text>
+<text class="label" x="545.0" y="198" text-anchor="middle">Current Observation</text>
+<circle cx="434" cy="208" r="2.6" fill="#8b5cf6"/>
+<text class="bullet" x="444" y="212">Use latest tree or screenshot</text>
+<rect x="416" y="258" width="258" height="76" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="545.0" y="278" text-anchor="middle">Contract</text>
+<text class="label" x="545.0" y="300" text-anchor="middle">Semantic Action</text>
+<circle cx="434" cy="310" r="2.6" fill="#8b5cf6"/>
+<text class="bullet" x="444" y="314">Planner says target intent</text>
+<rect x="416" y="360" width="258" height="84" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="545.0" y="380" text-anchor="middle">Guardrail</text>
+<text class="label" x="545.0" y="402" text-anchor="middle">Runtime State Machine</text>
+<circle cx="434" cy="412" r="2.6" fill="#f97316"/>
+<text class="bullet" x="444" y="416">Detect no-op, loop, regress</text>
+<circle cx="434" cy="430" r="2.6" fill="#f97316"/>
+<text class="bullet" x="444" y="434">Upgrade to hybrid only when needed</text>
+<rect x="416" y="474" width="258" height="84" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="545.0" y="494" text-anchor="middle">Guardrail</text>
+<text class="label" x="545.0" y="516" text-anchor="middle">Independent Verify</text>
+<circle cx="434" cy="526" r="2.6" fill="#f97316"/>
+<text class="bullet" x="444" y="530">Planner cannot self-certify</text>
+<circle cx="434" cy="544" r="2.6" fill="#f97316"/>
+<text class="bullet" x="444" y="548">Verifier accepts or redirects</text>
+<rect x="804" y="160" width="166" height="70" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="887.0" y="180" text-anchor="middle">Input</text>
+<text class="label" x="887.0" y="202" text-anchor="middle">Observation</text>
+<circle cx="822" cy="212" r="2.6" fill="#16a34a"/>
+<text class="bullet" x="832" y="216">view tree first</text>
+<rect x="1020" y="160" width="166" height="70" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="1103.0" y="180" text-anchor="middle">Reason</text>
+<text class="label" x="1103.0" y="202" text-anchor="middle">Planner VLM</text>
+<circle cx="1038" cy="212" r="2.6" fill="#8b5cf6"/>
+<text class="bullet" x="1048" y="216">next goal</text>
+<rect x="1020" y="296" width="166" height="76" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="1103.0" y="316" text-anchor="middle">Ground</text>
+<text class="label" x="1103.0" y="338" text-anchor="middle">Locator</text>
+<circle cx="1038" cy="348" r="2.6" fill="#16a34a"/>
+<text class="bullet" x="1048" y="352">tree semantic match</text>
+<rect x="804" y="296" width="166" height="76" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="887.0" y="316" text-anchor="middle">Act</text>
+<text class="label" x="887.0" y="338" text-anchor="middle">WDA Executor</text>
+<circle cx="822" cy="348" r="2.6" fill="#2563eb"/>
+<text class="bullet" x="832" y="352">tap / swipe / keys</text>
+<rect x="804" y="438" width="166" height="76" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="887.0" y="458" text-anchor="middle">Transition</text>
+<text class="label" x="887.0" y="480" text-anchor="middle">Progress Verifier</text>
+<circle cx="822" cy="490" r="2.6" fill="#f97316"/>
+<text class="bullet" x="832" y="494">advanced / no-op</text>
+<rect x="1020" y="438" width="166" height="76" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="1103.0" y="458" text-anchor="middle">Finish</text>
+<text class="label" x="1103.0" y="480" text-anchor="middle">Completion</text>
+<circle cx="1038" cy="490" r="2.6" fill="#f97316"/>
+<text class="bullet" x="1048" y="494">task satisfied?</text>
+<rect x="912" y="548" width="166" height="60" rx="10" fill="#ffffff" stroke="#6b7280" stroke-width="2" filter="url(#shadow)"/>
+<text class="type" x="995.0" y="568" text-anchor="middle">Memory</text>
+<text class="label" x="995.0" y="590" text-anchor="middle">Fact History</text>
+<rect x="72" y="808" width="230" height="42" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="label" x="187.0" y="835" text-anchor="middle">No App-Specific Hacks</text>
+<rect x="342" y="808" width="230" height="42" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="label" x="457.0" y="835" text-anchor="middle">Fresh Current Context</text>
+<rect x="612" y="808" width="230" height="42" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="label" x="727.0" y="835" text-anchor="middle">Domain Facts via Hints</text>
+<rect x="882" y="808" width="230" height="42" rx="10" fill="#ffffff" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+<text class="label" x="997.0" y="835" text-anchor="middle">Debuggable Failures</text>
+<rect x="870" y="650" width="350" height="116" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+<line x1="886" y1="674" x2="916" y2="674" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-learn)"/>
+<text class="small" x="928" y="678">Pattern learned from prior art</text>
+<line x1="886" y1="693" x2="916" y2="693" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-apply)"/>
+<text class="small" x="928" y="697">Generalized into RunCue</text>
+<line x1="886" y1="712" x2="916" y2="712" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-loop)"/>
+<text class="small" x="928" y="716">Runtime action loop</text>
+<line x1="886" y1="731" x2="916" y2="731" stroke="#f97316" stroke-width="2" marker-end="url(#arrow-verify)"/>
+<text class="small" x="928" y="735">Verification gate</text>
+<line x1="886" y1="750" x2="916" y2="750" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-feedback)"/>
+<text class="small" x="928" y="754">Factual feedback</text>
+</svg>

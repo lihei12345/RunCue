@@ -1,0 +1,416 @@
+{
+  "title": "RunCue Generic GUI Agent Optimization",
+  "subtitle": "What RunCue adopted from Midscene.js and AutoGLM: split responsibilities, act on current observation, verify every transition",
+  "width": 1280,
+  "height": 900,
+  "sections": [
+    {
+      "id": "learned",
+      "label": "1. Learned Patterns",
+      "x": 42,
+      "y": 120,
+      "width": 300,
+      "height": 520,
+      "fill": "#eff6ff",
+      "stroke": "#bfdbfe"
+    },
+    {
+      "id": "principles",
+      "label": "2. Generalized Principles",
+      "x": 382,
+      "y": 120,
+      "width": 330,
+      "height": 520,
+      "fill": "#faf5ff",
+      "stroke": "#ddd6fe"
+    },
+    {
+      "id": "runtime",
+      "label": "3. RunCue Runtime Loop",
+      "x": 752,
+      "y": 120,
+      "width": 486,
+      "height": 520,
+      "fill": "#f0fdf4",
+      "stroke": "#bbf7d0"
+    },
+    {
+      "id": "outcome",
+      "label": "4. Why This Is Generic",
+      "x": 42,
+      "y": 774,
+      "width": 1196,
+      "height": 96,
+      "fill": "#fff7ed",
+      "stroke": "#fed7aa"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "midscene",
+      "section": "learned",
+      "label": "Midscene.js",
+      "type": "Reference",
+      "x": 72,
+      "y": 172,
+      "width": 240,
+      "height": 150,
+      "fill": "#ffffff",
+      "stroke": "#2563eb",
+      "bullets": [
+        "Plan / locate / act split",
+        "Action schema + examples",
+        "Current observation focus",
+        "Assertions outside actions"
+      ]
+    },
+    {
+      "id": "autoglm",
+      "section": "learned",
+      "label": "AutoGLM",
+      "type": "Reference",
+      "x": 72,
+      "y": 392,
+      "width": 240,
+      "height": 158,
+      "fill": "#ffffff",
+      "stroke": "#16a34a",
+      "bullets": [
+        "Code-like action space",
+        "Explicit app state checks",
+        "Clear type semantics",
+        "Retry / wait / takeover rules"
+      ]
+    },
+    {
+      "id": "current-observation",
+      "section": "principles",
+      "label": "Current Observation",
+      "type": "Contract",
+      "x": 416,
+      "y": 156,
+      "width": 258,
+      "height": 76,
+      "fill": "#ffffff",
+      "stroke": "#8b5cf6",
+      "bullets": [
+        "Use latest tree or screenshot",
+        "No stale element IDs"
+      ]
+    },
+    {
+      "id": "semantic-action",
+      "section": "principles",
+      "label": "Semantic Action",
+      "type": "Contract",
+      "x": 416,
+      "y": 258,
+      "width": 258,
+      "height": 76,
+      "fill": "#ffffff",
+      "stroke": "#8b5cf6",
+      "bullets": [
+        "Planner says target intent",
+        "Runtime resolves element/point"
+      ]
+    },
+    {
+      "id": "state-machine",
+      "section": "principles",
+      "label": "Runtime State Machine",
+      "type": "Guardrail",
+      "x": 416,
+      "y": 360,
+      "width": 258,
+      "height": 84,
+      "fill": "#ffffff",
+      "stroke": "#f97316",
+      "bullets": [
+        "Detect no-op, loop, regress",
+        "Upgrade to hybrid only when needed"
+      ]
+    },
+    {
+      "id": "independent-verify",
+      "section": "principles",
+      "label": "Independent Verify",
+      "type": "Guardrail",
+      "x": 416,
+      "y": 474,
+      "width": 258,
+      "height": 84,
+      "fill": "#ffffff",
+      "stroke": "#f97316",
+      "bullets": [
+        "Planner cannot self-certify",
+        "Verifier accepts or redirects"
+      ]
+    },
+    {
+      "id": "observation",
+      "section": "runtime",
+      "label": "Observation",
+      "type": "Input",
+      "x": 804,
+      "y": 160,
+      "width": 166,
+      "height": 70,
+      "fill": "#ffffff",
+      "stroke": "#16a34a",
+      "bullets": [
+        "view tree first",
+        "screenshot on demand"
+      ]
+    },
+    {
+      "id": "planner",
+      "section": "runtime",
+      "label": "Planner VLM",
+      "type": "Reason",
+      "x": 1020,
+      "y": 160,
+      "width": 166,
+      "height": 70,
+      "fill": "#ffffff",
+      "stroke": "#8b5cf6",
+      "bullets": [
+        "next goal",
+        "semantic target"
+      ]
+    },
+    {
+      "id": "locator",
+      "section": "runtime",
+      "label": "Locator",
+      "type": "Ground",
+      "x": 1020,
+      "y": 296,
+      "width": 166,
+      "height": 76,
+      "fill": "#ffffff",
+      "stroke": "#16a34a",
+      "bullets": [
+        "tree semantic match",
+        "visual fallback"
+      ]
+    },
+    {
+      "id": "executor",
+      "section": "runtime",
+      "label": "WDA Executor",
+      "type": "Act",
+      "x": 804,
+      "y": 296,
+      "width": 166,
+      "height": 76,
+      "fill": "#ffffff",
+      "stroke": "#2563eb",
+      "bullets": [
+        "tap / swipe / keys",
+        "factual result"
+      ]
+    },
+    {
+      "id": "progress",
+      "section": "runtime",
+      "label": "Progress Verifier",
+      "type": "Transition",
+      "x": 804,
+      "y": 438,
+      "width": 166,
+      "height": 76,
+      "fill": "#ffffff",
+      "stroke": "#f97316",
+      "bullets": [
+        "advanced / no-op",
+        "regressed / looped"
+      ]
+    },
+    {
+      "id": "completion",
+      "section": "runtime",
+      "label": "Completion",
+      "type": "Finish",
+      "x": 1020,
+      "y": 438,
+      "width": 166,
+      "height": 76,
+      "fill": "#ffffff",
+      "stroke": "#f97316",
+      "bullets": [
+        "task satisfied?",
+        "next goal if not"
+      ]
+    },
+    {
+      "id": "history",
+      "section": "runtime",
+      "label": "Fact History",
+      "type": "Memory",
+      "x": 912,
+      "y": 548,
+      "width": 166,
+      "height": 60,
+      "fill": "#ffffff",
+      "stroke": "#6b7280",
+      "bullets": [
+        "actions, diffs, hints"
+      ]
+    },
+    {
+      "id": "outcome-no-hacks",
+      "section": "outcome",
+      "label": "No App-Specific Hacks",
+      "x": 72,
+      "y": 808,
+      "width": 230,
+      "height": 42,
+      "fill": "#ffffff",
+      "stroke": "#f97316"
+    },
+    {
+      "id": "outcome-fresh",
+      "section": "outcome",
+      "label": "Fresh Current Context",
+      "x": 342,
+      "y": 808,
+      "width": 230,
+      "height": 42,
+      "fill": "#ffffff",
+      "stroke": "#f97316"
+    },
+    {
+      "id": "outcome-hints",
+      "section": "outcome",
+      "label": "Domain Facts via Hints",
+      "x": 612,
+      "y": 808,
+      "width": 230,
+      "height": 42,
+      "fill": "#ffffff",
+      "stroke": "#f97316"
+    },
+    {
+      "id": "outcome-debug",
+      "section": "outcome",
+      "label": "Debuggable Failures",
+      "x": 882,
+      "y": 808,
+      "width": 230,
+      "height": 42,
+      "fill": "#ffffff",
+      "stroke": "#f97316"
+    }
+  ],
+  "arrows": [
+    {
+      "source": "midscene",
+      "target": "current-observation",
+      "flow": "learn",
+      "label": "observation discipline"
+    },
+    {
+      "source": "midscene",
+      "target": "semantic-action",
+      "flow": "learn",
+      "label": "split locate"
+    },
+    {
+      "source": "autoglm",
+      "target": "state-machine",
+      "flow": "learn",
+      "label": "state guards"
+    },
+    {
+      "source": "autoglm",
+      "target": "independent-verify",
+      "flow": "learn",
+      "label": "verify after act"
+    },
+    {
+      "source": "current-observation",
+      "target": "observation",
+      "flow": "apply"
+    },
+    {
+      "source": "semantic-action",
+      "target": "planner",
+      "flow": "apply"
+    },
+    {
+      "source": "semantic-action",
+      "target": "locator",
+      "flow": "apply"
+    },
+    {
+      "source": "state-machine",
+      "target": "progress",
+      "flow": "apply"
+    },
+    {
+      "source": "independent-verify",
+      "target": "completion",
+      "flow": "apply"
+    },
+    {
+      "source": "observation",
+      "target": "planner",
+      "flow": "loop"
+    },
+    {
+      "source": "planner",
+      "target": "locator",
+      "flow": "loop"
+    },
+    {
+      "source": "locator",
+      "target": "executor",
+      "flow": "loop"
+    },
+    {
+      "source": "executor",
+      "target": "progress",
+      "flow": "loop"
+    },
+    {
+      "source": "progress",
+      "target": "completion",
+      "flow": "verify"
+    },
+    {
+      "source": "completion",
+      "target": "history",
+      "flow": "feedback"
+    },
+    {
+      "source": "history",
+      "target": "observation",
+      "flow": "feedback",
+      "label": "next step context"
+    }
+  ],
+  "legend": [
+    {
+      "flow": "learn",
+      "label": "Pattern learned from prior art"
+    },
+    {
+      "flow": "apply",
+      "label": "Generalized into RunCue"
+    },
+    {
+      "flow": "loop",
+      "label": "Runtime action loop"
+    },
+    {
+      "flow": "verify",
+      "label": "Verification gate"
+    },
+    {
+      "flow": "feedback",
+      "label": "Factual feedback"
+    }
+  ],
+  "legend_x": 870,
+  "legend_y": 650
+}

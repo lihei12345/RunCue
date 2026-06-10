@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.local
+~/.runcue/
+/tmp/runcue-*
+log.txt
+.mcp.json
+.claude/settings.local.json

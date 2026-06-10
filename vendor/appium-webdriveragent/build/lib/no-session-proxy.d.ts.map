@@ -1,0 +1,1 @@
+{"version":3,"file":"no-session-proxy.d.ts","sourceRoot":"","sources":["../../lib/no-session-proxy.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,OAAO,EAAC,MAAM,qBAAqB,CAAC;AAC5C,OAAO,KAAK,EAAC,YAAY,EAAC,MAAM,eAAe,CAAC;AAEhD,qBAAa,cAAe,SAAQ,OAAO;gBAC7B,IAAI,GAAE,YAAiB;IAI1B,cAAc,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM;CAU7C"}
