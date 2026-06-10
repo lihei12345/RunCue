@@ -146,6 +146,47 @@ runcue run "Open Maps, search for the nearest Walmart, and start navigation. In 
   --fresh-app
 ```
 
+## XcodeBuildMCP + RunCue Workflow
+
+RunCue is designed to cooperate with XcodeBuildMCP instead of replacing it. XcodeBuildMCP owns build, install, launch, screenshots, logs, and Xcode project state. RunCue owns UI navigation and state checks on the same device.
+
+```text
+Coding Agent
+  |
+  | 1. Build, install, and launch the app
+  v
+XcodeBuildMCP
+  |
+  | build_run_sim / launch_app_sim
+  | returns simulator name or UDID
+  v
+iOS Simulator or Device
+  |
+  | 2. Navigate to the target UI state on that same device
+  v
+RunCue MCP / CLI
+  |
+  | observe -> plan -> locate -> execute -> verify
+  | through WebDriverAgent
+  v
+Target App UI State
+  |
+  | 3. Capture final evidence when needed
+  v
+XcodeBuildMCP
+  |
+  | screenshot / logs / test output
+  v
+Coding Agent
+```
+
+Practical rules:
+
+- Use XcodeBuildMCP first to prepare the app state.
+- Pass the exact simulator name or UDID from that build/run flow to RunCue.
+- Let RunCue perform UI actions while it is running.
+- Use XcodeBuildMCP again after RunCue finishes for screenshots, logs, or build diagnostics.
+
 ## MCP Usage
 
 RunCue exposes an MCP server over stdio:
