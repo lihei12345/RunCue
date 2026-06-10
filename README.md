@@ -8,6 +8,20 @@ RunCue is a developer UI navigation tool for iOS apps. It uses natural-language 
 
 RunCue is intentionally scoped: it does not build, install, or debug your app. Use XcodeBuildMCP or your normal Xcode workflow for build, launch, screenshots, and logs. Use RunCue when you need an agent to reach a specific UI state.
 
+## Demo
+
+Click the screenshot to open the demo recording.
+
+<p align="center">
+  <a href="https://github.com/lihei12345/RunCue/blob/main/docs/assets/screen-recording-720p.mov">
+    <img src="docs/assets/terminal-screenshot.png" alt="RunCue terminal execution screenshot" width="860" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/lihei12345/RunCue/blob/main/docs/assets/screen-recording-720p.mov">Watch the demo recording</a>
+</p>
+
 ## Features
 
 - WDA-only iOS automation for simulators and physical devices.

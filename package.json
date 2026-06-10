@@ -13,7 +13,9 @@
     "CONTRIBUTING.md",
     "SECURITY.md",
     "THIRD_PARTY_NOTICES.md",
-    "docs"
+    "docs",
+    "!docs/assets/*.mov",
+    "!docs/assets/*.mp4"
   ],
   "bin": {
     "runcue": "dist/cli.js"
